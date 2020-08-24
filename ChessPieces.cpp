@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C)  2019  与子偕臧.  All rights reserved.
  *
  * Author:  与子偕臧 xmulitech@gmail.com
@@ -102,7 +102,10 @@ QString ChessPieces::getnName()
     case BING:
         return "兵";
     case JIANG:
-        return "将";
+        if(!m_bRed)     //把红方的将改为帅
+            return "将";
+        else
+            return "帅";
     case SHI:
         return "士";
     case XIANG:

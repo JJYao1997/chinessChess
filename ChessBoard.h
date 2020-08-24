@@ -60,6 +60,7 @@
 #include <QMessageBox>
 #include <QtGlobal>
 #include "AboutAuthor.h"
+#pragma execution_character_set("utf-8")    //解决Qt5下中文乱码问题
 
 namespace Ui {         //具体作用???
 class ChessBoard;      //???

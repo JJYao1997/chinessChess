@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C)  2019  与子偕臧.  All rights reserved.
  *
  * Author:  与子偕臧 xmulitech@gmail.com
@@ -387,6 +387,10 @@ void ChessBoard::clickPieces(int checkedID, int& row, int& col)
 //总的移动规则，选中准备下的棋子，被杀的棋子， 准备移动到的目的行列值
 bool ChessBoard::canMove(int moveId, int killId, int row, int col)
 {
+    //在没有点击开始前不能移动任何棋子
+    if(m_bIsStart == false)
+        return false;
+
     //1.确定是选择其它棋子还是走棋
     //2.是否需要使用到canMoveXXX()来做限制
     //3.罗列出所有情况，和需要的得到的结果值 ==>  然后进行中间的逻辑层判断※不要受到别人的代码框架的束缚※
@@ -448,6 +452,10 @@ bool ChessBoard::canMove(int moveId, int killId, int row, int col)
 
 bool ChessBoard::canMoveJIANG(int moveId, int killId, int row, int col)
 {
+    //完善规则：当红黑两方的将之间没有其他棋子时，可以直接吃掉对方的将
+    if(getStoneCountAtLine(m_ChessPieces[moveID].m_nRow, m_ChessPieces[moveID].m_nCol, row, col) == 0 && (killID == 4 || killID == 20))
+        return true;
+
     if(m_ChessPieces[moveId].m_bRed) //红 将
     {
         if(row < 7 || col < 3 || col > 5) return false;

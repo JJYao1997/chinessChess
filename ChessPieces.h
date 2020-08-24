@@ -25,6 +25,7 @@
 #include <QString>
 //#include <QRect>
 //#include <QPainter>
+#pragma execution_character_set("utf-8")    //解决Qt5下中文乱码问题
 
 class ChessPieces
 {
